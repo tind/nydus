@@ -95,7 +95,7 @@ class Ketama(object):
                 b_key[fn(0)])
 
     def _md5_digest(self, key):
-        if PY3:
+        if PY3 and isinstance(key, str):
             key = key.encode('utf-8')
 
         m = hashlib.md5()
