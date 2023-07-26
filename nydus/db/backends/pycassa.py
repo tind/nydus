@@ -45,7 +45,7 @@ class PycassaCluster(BaseCluster):
     and communication within a set of nodes.
     """
     def __init__(self, hosts=None, keyspace=None, backend=Pycassa, **kwargs):
-        assert isinstance(hosts, collections.Iterable), 'hosts must be an iterable'
+        assert isinstance(hosts, collections.abc.Iterable), 'hosts must be an iterable'
         assert keyspace, 'keyspace must be set'
 
         return super(PycassaCluster, self).__init__(

@@ -20,7 +20,7 @@ __all__ = ('LazyConnectionHandler', 'BaseCluster')
 def iter_hosts(hosts):
     # this can either be a dictionary (with the key acting as the numeric
     # index) or it can be a sorted list.
-    if isinstance(hosts, collections.Mapping):
+    if isinstance(hosts, collections.abc.Mapping):
         return iteritems(hosts)
     return enumerate(hosts)
 
@@ -29,9 +29,9 @@ def create_connection(Connection, num, host_settings, defaults):
     # host_settings can be an iterable or a dictionary depending on the style
     # of connection (some connections share options and simply just need to
     # pass a single host, or a list of hosts)
-    if isinstance(host_settings, collections.Mapping):
+    if isinstance(host_settings, collections.abc.Mapping):
         return Connection(num, **apply_defaults(host_settings, defaults or {}))
-    elif isinstance(host_settings, collections.Iterable):
+    elif isinstance(host_settings, collections.abc.Iterable):
         return Connection(num, *host_settings, **defaults or {})
     return Connection(num, host_settings, **defaults or {})
 

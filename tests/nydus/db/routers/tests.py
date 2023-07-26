@@ -3,7 +3,7 @@ from __future__ import absolute_import
 import mock
 import time
 
-from collections import Iterable
+from collections.abc import Iterable
 from inspect import getargspec
 
 from nydus.db.base import BaseCluster
